@@ -1159,19 +1159,24 @@ if [[ -s "${PROJECT_DIR}"/.github_token ]]; then
 	git lfs install > /dev/null 2>&1
 	[ -e ".gitattributes" ] || find . -type f -not -path ".git/*" -size +100M -exec git lfs track {} \; > /dev/null 2>&1
 	[ -e ".gitattributes" ] && {
+                echo "Setup Git LFS..."
 		git add ".gitattributes" > /dev/null 2>&1
 		git commit -sm "Setup Git LFS" > /dev/null 2>&1
 		git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 	}
+        echo "Dumping extras..."
 	git add -- . ':!system/' ':!vendor/' > /dev/null 2>&1
 	git commit -sm "Add extras for ${description}" > /dev/null 2>&1
 	git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
+        echo "Dumping vendor..."
 	git add vendor/ > /dev/null 2>&1
 	git commit -sm "Add vendor for ${description}" > /dev/null 2>&1
 	git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
+        echo "Dumping apps..."
 	git add $(find -type f -name '*.apk') > /dev/null 2>&1
 	git commit -sm "Add apps for ${description}" > /dev/null 2>&1
 	git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
+        echo "Dumping system..."
 	git add system/ > /dev/null 2>&1
 	git commit -sm "Add system for ${description}" > /dev/null 2>&1
 	git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
@@ -1297,19 +1302,24 @@ elif [[ -s "${PROJECT_DIR}"/.gitlab_token ]]; then
 		git lfs install > /dev/null 2>&1
 		[ -e ".gitattributes" ] || find . -type f -not -path ".git/*" -size +100M -exec git lfs track {} \; > /dev/null 2>&1
 		[ -e ".gitattributes" ] && {
+                        echo "Setup Git LFS..."
 			git add ".gitattributes" > /dev/null 2>&1
 			git commit -sm "Setup Git LFS" > /dev/null 2>&1
 			git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 		}
+                echo "Dumping extras..."
 		git add -- . ':!system/' ':!vendor/' > /dev/null 2>&1
 		git commit -sm "Add extras for ${description}" > /dev/null 2>&1
 		git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
+                echo "Dumping vendor..."
 		git add vendor/ > /dev/null 2>&1
 		git commit -sm "Add vendor for ${description}" > /dev/null 2>&1
 		git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
+                echo "Dumping apps..."
 		git add $(find -type f -name '*.apk') > /dev/null 2>&1
 		git commit -sm "Add apps for ${description}" > /dev/null 2>&1
 		git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
+                echo "Dumping system..."
 		git add system/ > /dev/null 2>&1
 		git commit -sm "Add system for ${description}" > /dev/null 2>&1
 		git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."

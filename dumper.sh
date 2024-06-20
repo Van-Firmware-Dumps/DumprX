@@ -667,7 +667,7 @@ elif 7z l -ba "${FILEPATH}" | grep -q "UPDATE.APP" 2>/dev/null || [[ $(find "${T
 	printf "Huawei UPDATE.APP Detected\n"
 	[[ -f "${FILEPATH}" ]] && 7z x "${FILEPATH}" UPDATE.APP 2>/dev/null >> "${TMPDIR}"/zip.log
 	find "${TMPDIR}" -type f -name "UPDATE.APP" -exec mv {} . \;
-	python3 "${SPLITUAPP}" -f "UPDATE.APP" -l super preas preavs || (
+	python3 "${SPLITUAPP}" -f "UPDATE.APP" || (
 	for partition in ${PARTITIONS}; do
 		python3 "${SPLITUAPP}" -f "UPDATE.APP" -l "${partition/.img/}" || printf "%s not found in UPDATE.APP\n" "${partition}"
 	done )

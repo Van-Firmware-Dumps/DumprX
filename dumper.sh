@@ -1160,20 +1160,20 @@ if [[ -s "${PROJECT_DIR}"/.github_token ]]; then
 	[ -e ".gitattributes" ] && {
 		git add ".gitattributes" > /dev/null 2>&1
 		git commit -sm "Setup Git LFS" > /dev/null 2>&1
-		git push -u origin "${branch}" > /dev/null 2>&1
+		git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 	}
 	git add -- . ':!system/' ':!vendor/' > /dev/null 2>&1
 	git commit -sm "Add extras for ${description}" > /dev/null 2>&1
-	git push -u origin "${branch}" > /dev/null 2>&1
+	git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 	git add vendor/ > /dev/null 2>&1
 	git commit -sm "Add vendor for ${description}" > /dev/null 2>&1
-	git push -u origin "${branch}" > /dev/null 2>&1
+	git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 	git add $(find -type f -name '*.apk') > /dev/null 2>&1
 	git commit -sm "Add apps for ${description}" > /dev/null 2>&1
-	git push -u origin "${branch}" > /dev/null 2>&1
+	git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 	git add system/ > /dev/null 2>&1
 	git commit -sm "Add system for ${description}" > /dev/null 2>&1
-	git push -u origin "${branch}" > /dev/null 2>&1
+	git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 	sleep 1
 	
 	# Telegram channel post
@@ -1298,20 +1298,20 @@ elif [[ -s "${PROJECT_DIR}"/.gitlab_token ]]; then
 		[ -e ".gitattributes" ] && {
 			git add ".gitattributes" > /dev/null 2>&1
 			git commit -sm "Setup Git LFS" > /dev/null 2>&1
-			git push -u origin "${branch}" > /dev/null 2>&1
+			git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 		}
 		git add -- . ':!system/' ':!vendor/' > /dev/null 2>&1
 		git commit -sm "Add extras for ${description}" > /dev/null 2>&1
-		git push -u origin "${branch}" > /dev/null 2>&1
+		git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 		git add vendor/ > /dev/null 2>&1
 		git commit -sm "Add vendor for ${description}" > /dev/null 2>&1
-		git push -u origin "${branch}" > /dev/null 2>&1
+		git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 		git add $(find -type f -name '*.apk') > /dev/null 2>&1
 		git commit -sm "Add apps for ${description}" > /dev/null 2>&1
-		git push -u origin "${branch}" > /dev/null 2>&1
+		git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 		git add system/ > /dev/null 2>&1
 		git commit -sm "Add system for ${description}" > /dev/null 2>&1
-		git push -u origin "${branch}" > /dev/null 2>&1
+		git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || git push -u origin "${branch}" > /dev/null 2>&1 || echo "Push failed, please try again later."
 		sleep 1
 	done
 

@@ -6,7 +6,6 @@
 
 # Based on the app_structure file in split_updata.pl by McSpoon
 
-from __future__ import absolute_import
 from __future__ import print_function
 
 import os
@@ -74,13 +73,13 @@ def extract(source, flist):
 				chunk = 10240
 
 				try:
-				        with open(outdir+os.sep+filename+'.img', 'ab') as o:
+					with open(outdir+os.sep+filename+'.img', 'wb') as o:
 						while filesize > 0:
-					 		if chunk > filesize:
-					 			chunk = filesize
+							if chunk > filesize:
+								chunk = filesize
 
-					 		o.write(f.read(chunk))
-					 		filesize -= chunk
+							o.write(f.read(chunk))
+							filesize -= chunk
 				except:
 					print('ERROR: Failed to create '+filename+'.img\n')
 					return 1

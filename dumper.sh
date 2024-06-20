@@ -1154,26 +1154,26 @@ if [[ -s "${PROJECT_DIR}"/.github_token ]]; then
 	# Commit and Push
 	printf "\nPushing to %s via HTTPS...\nBranch:%s\n" "https://github.com/${GIT_ORG}/${repo}.git" "${branch}"
 	sleep 1
-	git remote add origin https://${GITHUB_TOKEN}@github.com/${GIT_ORG}/${repo}.git "${branch}"
-	git lfs install
-	[ -e ".gitattributes" ] || find . -type f -not -path ".git/*" -size +100M -exec git lfs track {} \;
+	git remote add origin https://${GITHUB_TOKEN}@github.com/${GIT_ORG}/${repo}.git
+	git lfs install > /dev/null 2>&1
+	[ -e ".gitattributes" ] || find . -type f -not -path ".git/*" -size +100M -exec git lfs track {} \; > /dev/null 2>&1
 	[ -e ".gitattributes" ] && {
-		git add ".gitattributes"
-		git commit -sm "Setup Git LFS"
-		git push -u origin "${branch}"
+		git add ".gitattributes" > /dev/null 2>&1
+		git commit -sm "Setup Git LFS" > /dev/null 2>&1
+		git push -u origin "${branch}" > /dev/null 2>&1
 	}
-	git add -- . ':!system/' ':!vendor/'
-	git commit -sm "Add extras for ${description}"
-	git push -u origin "${branch}"
-	git add vendor/
-	git commit -sm "Add vendor for ${description}"
-	git push -u origin "${branch}"
-	git add $(find -type f -name '*.apk')
-	git commit -sm "Add apps for ${description}"
-	git push -u origin "${branch}"
-	git add system/
-	git commit -sm "Add system for ${description}"
-	git push -u origin "${branch}"
+	git add -- . ':!system/' ':!vendor/' > /dev/null 2>&1
+	git commit -sm "Add extras for ${description}" > /dev/null 2>&1
+	git push -u origin "${branch}" > /dev/null 2>&1
+	git add vendor/ > /dev/null 2>&1
+	git commit -sm "Add vendor for ${description}" > /dev/null 2>&1
+	git push -u origin "${branch}" > /dev/null 2>&1
+	git add $(find -type f -name '*.apk') > /dev/null 2>&1
+	git commit -sm "Add apps for ${description}" > /dev/null 2>&1
+	git push -u origin "${branch}" > /dev/null 2>&1
+	git add system/ > /dev/null 2>&1
+	git commit -sm "Add system for ${description}" > /dev/null 2>&1
+	git push -u origin "${branch}" > /dev/null 2>&1
 	sleep 1
 	
 	# Telegram channel post
@@ -1293,25 +1293,25 @@ elif [[ -s "${PROJECT_DIR}"/.gitlab_token ]]; then
 	do
 		printf "\nPushing to %s via SSH...\nBranch:%s\n" "${GITLAB_HOST}/${GIT_ORG}/${repo}.git" "${branch}"
 		sleep 1
-		git lfs install
-		[ -e ".gitattributes" ] || find . -type f -not -path ".git/*" -size +100M -exec git lfs track {} \;
+		git lfs install > /dev/null 2>&1
+		[ -e ".gitattributes" ] || find . -type f -not -path ".git/*" -size +100M -exec git lfs track {} \; > /dev/null 2>&1
 		[ -e ".gitattributes" ] && {
-			git add ".gitattributes"
-			git commit -sm "Setup Git LFS"
-			git push -u origin "${branch}"
+			git add ".gitattributes" > /dev/null 2>&1
+			git commit -sm "Setup Git LFS" > /dev/null 2>&1
+			git push -u origin "${branch}" > /dev/null 2>&1
 		}
-		git add -- . ':!system/' ':!vendor/'
-		git commit -sm "Add extras for ${description}"
-		git push -u origin "${branch}"
-		git add vendor/
-		git commit -sm "Add vendor for ${description}"
-		git push -u origin "${branch}"
-		git add $(find -type f -name '*.apk')
-		git commit -sm "Add apps for ${description}"
-		git push -u origin "${branch}"
-		git add system/
-		git commit -sm "Add system for ${description}"
-		git push -u origin "${branch}"
+		git add -- . ':!system/' ':!vendor/' > /dev/null 2>&1
+		git commit -sm "Add extras for ${description}" > /dev/null 2>&1
+		git push -u origin "${branch}" > /dev/null 2>&1
+		git add vendor/ > /dev/null 2>&1
+		git commit -sm "Add vendor for ${description}" > /dev/null 2>&1
+		git push -u origin "${branch}" > /dev/null 2>&1
+		git add $(find -type f -name '*.apk') > /dev/null 2>&1
+		git commit -sm "Add apps for ${description}" > /dev/null 2>&1
+		git push -u origin "${branch}" > /dev/null 2>&1
+		git add system/ > /dev/null 2>&1
+		git commit -sm "Add system for ${description}" > /dev/null 2>&1
+		git push -u origin "${branch}" > /dev/null 2>&1
 		sleep 1
 	done
 

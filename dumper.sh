@@ -488,7 +488,7 @@ elif 7z l -ba "${FILEPATH}" | grep system | grep chunk | grep -q -v ".*\.so$" 2>
 		fi
 		rm -f *${partition}_b*
 		rm -f *${partition}_other*
-		romchunk=$(find . | grep *${partition}*chunk*)
+		romchunk=$(find . | grep ${partition} | grep chunk)
 		if echo "${romchunk}" | grep -q "sparsechunk"; then
 			if [[ ! -f ${partition}.img ]]; then
 				"${SIMG2IMG}" "${romchunk}" ${partition}.img.raw

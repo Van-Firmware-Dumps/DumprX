@@ -483,8 +483,8 @@ elif 7z l -ba "${FILEPATH}" | grep system | grep chunk | grep -q -v ".*\.so$" 2>
 			foundpartitions=$(7z l -ba "${FILEPATH}" | gawk '{print $NF}' | grep "${partition}".img)
 			7z e -y -- "${FILEPATH}" *"${partition}"*chunk* */*"${partition}"*chunk* "${foundpartitions}" dummypartition 2>/dev/null >> "${TMPDIR}"/zip.log
 		else
-			find "${TMPDIR}" -type f -name "*${partition}*chunk*" -exec mv {} . \; 2>/dev/null
-			find "${TMPDIR}" -type f -name "*${partition}*.img" -exec mv {} . \; 2>/dev/null
+			find "${TMPDIR}" -type f -name "*${partition}*chunk*" -exec mv {} . \;
+			find "${TMPDIR}" -type f -name "*${partition}*.img" -exec mv {} . \;
 		fi
 		rm -f -- *"${partition}"_b*
 		rm -f -- *"${partition}"_other*

@@ -491,10 +491,10 @@ elif 7z l -ba "${FILEPATH}" | grep system | grep chunk | grep -q -v ".*\.so$" 2>
 		romchunk=$(find . -maxdepth 1 -type f -name "*${partition}*chunk*" | cut -d'/' -f'2-' | sort)
 		if echo "${romchunk}" | grep -q "sparsechunk"; then
 			if [[ ! -f ${partition}.img ]]; then
-				"${SIMG2IMG}" "${romchunk}" "${partition}".img.raw
-				mv "${partition}".img.raw "${partition}".img
+				${SIMG2IMG} *${partition}*chunk* ${partition}.img.raw
+				mv ${partition}.img.raw ${partition}.img
 			fi
-			rm -rf -- *"${partition}"*chunk*
+			rm -rf -- *${partition}*chunk*
 		fi
 	done
 elif 7z l -ba "${FILEPATH}" | gawk '{print $NF}' | grep -q "system_new.img\|^system.img\|\/system.img\|\/system_image.emmc.img\|^system_image.emmc.img" 2>/dev/null || [[ $(find "${TMPDIR}" -type f -name "system*.img" | wc -l) -ge 1 ]]; then

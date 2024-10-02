@@ -824,7 +824,7 @@ for p in $PARTITIONS; do
 				if [ -f $p.img ] && [ $p != "modem" ]; then
 					echo "Extraction via fsck.erofs failed, extracting $p partition via 7z"
 					rm -rf "${p}"/*
-					7z x "$p".img -y -o"$p"/
+					7z x "$p".img -y -o"$p"/ > /dev/null 2>&1
 					if [ $? -eq 0 ]; then
 						rm -fv "$p".img > /dev/null 2>&1
 					else
